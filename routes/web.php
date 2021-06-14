@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::group(
         })->middleware(['auth'])->name('dashboard');
 
         require __DIR__.'/auth.php';
+
+        Route::get('/Grades', [GradeController::class, 'ShowGrades'])->name('Grades.ShowGrades');
 
     });
 
