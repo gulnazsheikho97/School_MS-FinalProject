@@ -31,7 +31,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="accordions.html">{{ trans('main-trans.GradesList') }}</a></li>
+                            <li><a href="{{ route('Grades.ShowGrades') }}">{{ trans('main-trans.GradesList') }}</a></li>
                         </ul>
                     </li>
                     <!-- menu item calendar-->
