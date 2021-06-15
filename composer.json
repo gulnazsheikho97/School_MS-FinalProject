@@ -11,7 +11,10 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "mcamara/laravel-localization": "^1.6"
+        "mcamara/laravel-localization": "^1.6",
+        "spatie/laravel-permission": "^4.2",
+        "spatie/laravel-translatable": "^5.0",
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

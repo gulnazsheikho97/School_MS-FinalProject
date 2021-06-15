@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\GradeController;
 
 /*
@@ -28,7 +29,8 @@ Route::group(
 
         require __DIR__.'/auth.php';
 
-        Route::get('/Grades', [GradeController::class, 'ShowGrades'])->name('Grades.ShowGrades');
+        Route::resource('grades', GradeController::class);
+
 
     });
 

@@ -2,32 +2,21 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
-class CreateGradesTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('grades', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-			$table->text('notes')->nullable();;
-            $table->timestamps();
-        });
-    }
+class CreateGradesTable extends Migration {
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('grades');
-    }
+	public function up()
+	{
+		Schema::create('Grades', function(Blueprint $table) {
+			$table->increments('id');
+			$table->timestamps();
+			$table->string('name')->unique();
+    	$table->text('notes')->nullable();
+		});
+	}
+
+	public function down()
+	{
+		Schema::drop('Grades');
+	}
 }
