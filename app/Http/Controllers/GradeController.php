@@ -17,6 +17,11 @@ class GradeController extends Controller
 
     public function store(StoreGrades $request)
     {
+        if (Grade::where('name->ar', $request->name)->orWhere('name->en',$request->name_en)->exists()) {
+
+            return redirect()->back()->withErrors(trans('Grades_trans.exists'));//make grades unique
+        }
+
         try {
             $validated = $request->validated();
             $Grade = new Grade();
