@@ -52,8 +52,8 @@
                             <tr>
                                 <?php $i++; ?>
                                 <td>{{ $i }}</td>
-                                <td>{{ $My_Class->name }}</td>
-                                <td>{{ $My_Class->Grades->name }}</td>
+                                <td>{{ $My_Class->name_class}}</td>
+                                <td>{{ $My_Class->Grades->name}}</td>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                         data-target="#edit{{ $My_Class->id }}"
@@ -185,7 +185,7 @@
             </div>
             <div class="modal-body">
 
-                <form class=" row mb-30" action="#" method="POST">
+                <form class=" row mb-30" action="{{route('classrooms.store')}}" method="POST">
                     @csrf
 
                     <div class="card-body">
