@@ -24,7 +24,7 @@ return [
      'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved',
      //class trans
      'title_page' => 'Classes',
-     'List_classes' => 'List Classes',
+     'List_classes' => 'Classes List',
      'add_class' => 'Add Class',
      'edit_class'=> 'Edit Class',
      'delete_class'=> 'Delete Class',
