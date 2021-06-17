@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ClassroomController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\ClassroomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ Route::group(
         require __DIR__.'/auth.php';
 
         Route::resource('grades', GradeController::class);
-        Route::resource('classrooms',ClassroomController::class);
+        Route::resource('classrooms', ClassroomController::class);
 
 
     });

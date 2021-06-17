@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClassesroom;
 use App\Models\Classroom;
 use App\Models\Grade;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class ClassroomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClassesroom $request)
     {
 
         $List_Classes = $request->List_Classes;
@@ -92,9 +93,24 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classroom $classroom)
+    public function update(Request $request)
     {
-        //
+        try {
+            $Classrooms = Classroom::findOrFail($request->id);
+
+            $Classrooms->update([
+
+                $Classrooms->name_class = ['ar' => $request->Name, 'en' => $request->Name_en],
+                $Classrooms->grade_id = $request->grade_id,
+            ]);
+            toastr()->success(trans('messages.Update'));
+            return redirect()->route('classrooms.index');
+        }
+
+        catch
+        (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -103,8 +119,10 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classroom $classroom)
+    public function destroy(Request $request)
     {
-        //
+        $Classrooms = Classroom::findOrFail($request->id)->delete();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->route('classrooms.index');
     }
 }

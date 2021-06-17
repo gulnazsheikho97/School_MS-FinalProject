@@ -55,7 +55,7 @@ class GradeController extends Controller
    try {
        $validated = $request->validated();
        $Grades = Grade::findOrFail($request->id);
-       $Grades->update([
+        $Grades->update([
          $Grades->name = ['ar' => $request->name, 'en' => $request->name_en],
          $Grades->notes = $request->notes,
        ]);
