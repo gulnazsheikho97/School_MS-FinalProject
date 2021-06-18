@@ -48,7 +48,7 @@ class ClassroomController extends Controller
 
                 $My_Classes = new Classroom();
 
-                $My_Classes->name_class = ['en' => $List_Class['name_class_en'], 'ar' => $List_Class['name']];
+                $My_Classes->name_class= ['en' => $List_Class['name_class_en'], 'ar' => $List_Class['name_class']];
 
                 $My_Classes->grade_id = $List_Class['grade_id'];
 

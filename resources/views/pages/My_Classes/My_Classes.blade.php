@@ -206,15 +206,15 @@
                                     <div class="row">
 
                                         <div class="col">
-                                            <label for="Name"
+                                            <label for="name"
                                                 class="mr-sm-2">{{ trans('main-trans.Name_class') }}
                                                 :</label>
-                                            <input class="form-control" type="text" name="name"  />
+                                            <input class="form-control" type="text" name="name_class"  />
                                         </div>
 
 
                                         <div class="col">
-                                            <label for="Name"
+                                            <label for="name"
                                                 class="mr-sm-2">{{ trans('main-trans.Name_class_en') }}
                                                 :</label>
                                             <input class="form-control" type="text" name="name_class_en" />
@@ -222,7 +222,7 @@
 
 
                                         <div class="col">
-                                            <label for="Name_en"
+                                            <label for="name_en"
                                                 class="mr-sm-2">{{ trans('main-trans.Name_Grade') }}
                                                 :</label>
 
