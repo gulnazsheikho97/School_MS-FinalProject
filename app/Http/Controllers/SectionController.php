@@ -86,7 +86,7 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -95,9 +95,11 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(request $request)
     {
-        //
+        Section::findOrFail($request->id)->delete();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->route('sections.index');
     }
 
 /*

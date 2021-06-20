@@ -34,7 +34,7 @@ Route::group(
         Route::resource('grades', GradeController::class);
         Route::resource('classrooms', ClassroomController::class);
         Route::resource('sections', SectionController::class);
-        Route::get('/classes/{id}', 'SectionController@getclasses');
+        //Route::get('/classes/{id}', 'SectionController@getclasses');
 
 
     });
