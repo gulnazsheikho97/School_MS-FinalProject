@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::group(
 
         Route::resource('grades', GradeController::class);
         Route::resource('classrooms', ClassroomController::class);
+        Route::resource('sections', SectionController::class);
+        Route::get('/classes/{id}', 'SectionController@getclasses');
 
 
     });
