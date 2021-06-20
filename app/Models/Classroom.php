@@ -21,4 +21,8 @@ class Classroom extends Model
         return $this->belongsTo(Grade::class,'grade_id');
 
     }
+        ////many to one relashionshep between sections and Classes
+        public function class_Section(){
+            return $this->hasMany( 'App\Models\Section', 'class_id');
+        }
 }
