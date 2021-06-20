@@ -30,7 +30,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                             <div class="pull-left"><i class="ti-calendar"></i><span
-                                    class="right-nav-text">{{trans('main-trans.title_page')}}</span></div>
+                                    class="right-nav-text">{{trans('main-trans.title_Classespage')}}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
@@ -43,13 +43,12 @@
                          <li>
                          <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
                             <div class="pull-left"><i class="ti-clipboard"></i></i><span
-                                  class="right-nav-text">{{trans('main-trans.sections')}}</span></div>
+                                  class="right-nav-text">{{trans('main-trans.title_Sectionpage')}}</span></div>
                                      <div class="pull-right"><i class="ti-plus"></i></div>
                                        <div class="clearfix"></div>
                         </a>
                         <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                             <li> <a href="calendar.html">Events Calendar </a> </li>
-                             <li> <a href="calendar-list.html">List Calendar</a> </li>
+                             <li> <a href="{{route('sections.index')}}">{{trans('main-trans.List_sections')}}</a> </li>
                         </ul>
                         </li>
                     <!-- students-->
