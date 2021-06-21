@@ -68,5 +68,8 @@ return [
     'Edit'=>'تعديل',
     'Delete'=>'حذف',
     'Close' => 'اغلاق',
+    //teachers
+    'Teachers'=>'المعلمين',
+    'List_Teachers' => 'قائمة المعلمين',
 
 ];

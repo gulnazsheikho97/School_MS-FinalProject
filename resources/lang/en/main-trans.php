@@ -67,5 +67,11 @@ return [
      'Edit'=>'Edit',
      'Delete'=>'Delete',
      'Close' => 'Close',
+    //teachers
+     'Teachers'=>'Teachers',
+     'List_Teachers' => 'List Teachers',
+
+
+
 
 ];
