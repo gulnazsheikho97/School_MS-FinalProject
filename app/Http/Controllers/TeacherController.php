@@ -21,7 +21,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-      return $this->Teacher->getAllTeachers();
+      $Teachers=$this->Teacher->getAllTeachers();
+     // return view('pages.Teachers.Teachers',compact('Teachers'));
+      return view('pages.Teachers.Teachers',['Teachers'=>$Teachers]);
     }
 
     /**
@@ -31,7 +33,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+         $specializations = $this->Teacher->Getspecialization();
+         $genders = $this->Teacher->GetGender();
+         return view('pages.Teachers.create',compact('specializations','genders'));
     }
 
     /**
@@ -42,7 +46,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->Teacher->StoreTeachers($request);
     }
 
     /**
@@ -62,9 +66,12 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teacher $teacher)
+    public function edit($id)
     {
-        //
+        $Teachers = $this->Teacher->editTeachers($id);
+        $specializations = $this->Teacher->Getspecialization();
+        $genders = $this->Teacher->GetGender();
+        return view('pages.Teachers.edit',compact('Teachers','specializations','genders'));
     }
 
     /**
@@ -74,9 +81,10 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teacher $teacher)
+    public function update(Request $request)
     {
-        //
+        return $this->Teacher->UpdateTeachers($request);
+
     }
 
     /**
@@ -85,8 +93,8 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Request $request)
     {
-        //
+       return $this->Teacher->DeleteTeachers($request);
     }
 }
