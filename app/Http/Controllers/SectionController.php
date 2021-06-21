@@ -28,15 +28,6 @@ class SectionController extends Controller
         return view('pages.Sections.Sections',['Grades'=>$Grades,'List_Grades'=>$list_Grades,'Classromms'=>$Classromms,'list_classes'=>$list_classes]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -54,7 +45,6 @@ class SectionController extends Controller
             $Sections->section_name = ['ar' => $request->section_name_Ar, 'en' => $request->section_name_En];
             $Sections->grade_id = $request->grade_id;
             $Sections->class_id = $request->class_id;
-            $Sections->Status = 1;
             $Sections->save();
             toastr()->success(trans('messages.success'));
 
@@ -66,16 +56,6 @@ class SectionController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -84,9 +64,23 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreSections $request)
     {
+        try {
+            $validated = $request->validated();
+            $Sections = Section::findOrFail($request->id);
 
+            $Sections->section_name = ['ar' => $request->section_name_Ar, 'en' => $request->section_name_En];
+            $Sections->grade_id = $request->grade_id;
+            $Sections->class_id = $request->class_id;
+            $Sections->save();
+            toastr()->success(trans('messages.Update'));
+            return redirect()->route('sections.index');
+        }
+        catch
+        (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
