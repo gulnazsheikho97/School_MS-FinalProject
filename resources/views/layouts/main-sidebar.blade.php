@@ -74,8 +74,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Teachers-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
+                            <li> <a href="{{route('teachers.index')}}">{{ trans('main-trans.List_Teachers')}} </a> </li>
+
                         </ul>
                     </li>
 
