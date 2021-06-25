@@ -120,7 +120,7 @@
                                 @enderror
                             </div>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Parent_trans.Next')}}</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Teacher_trans.Next')}}</button>
                     </form>
                         </div>
                     </div>

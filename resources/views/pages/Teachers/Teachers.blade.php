@@ -2,7 +2,7 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{trans('main_trans.List_Teachers')}}
+    {{trans('main-trans.List_Teachers')}}
 @stop
 @endsection
 @section('page-header')
@@ -66,15 +66,15 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p> {{ trans('My_Classes_trans.Warning_Grade') }}</p>
+                                                            <p> {{ trans('Teacher_trans.Warning_Grade') }}</p>
                                                             <input type="hidden" name="id"  value="{{$Teacher->id}}">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
+                                                                        data-dismiss="modal">{{ trans('Teacher_trans.Close') }}</button>
                                                                 <button type="submit"
-                                                                        class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
+                                                                        class="btn btn-danger">{{ trans('Teacher_trans.submit') }}</button>
                                                             </div>
                                                         </div>
                                                     </div>
