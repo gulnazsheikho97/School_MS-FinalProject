@@ -1,5 +1,9 @@
 <?php
 namespace App\Repository;
+
+use App\Http\Requests\StoreClassesroom;
+use App\Http\Requests\StoreTeachers;
+
 interface TeacherRepositoryInterface{
 
     // get all Teachers
@@ -12,13 +16,13 @@ interface TeacherRepositoryInterface{
     public function GetGender();
 
     // StoreTeachers
-    public function StoreTeachers($request);
+    public function StoreTeachers(StoreTeachers $request);
 
     // StoreTeachers
     public function editTeachers($id);
 
     // UpdateTeachers
-    public function UpdateTeachers($request);
+    public function UpdateTeachers(StoreTeachers $request);
 
     // DeleteTeachers
     public function DeleteTeachers($request);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTeachers;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Repository\TeacherRepositoryInterface;
@@ -35,7 +36,7 @@ class TeacherController extends Controller
     {
          $specializations = $this->Teacher->Getspecialization();
          $genders = $this->Teacher->GetGender();
-         return view('pages.Teachers.create',compact('specializations','genders'));
+         return view('pages.Teachers.create',['specializations'=> $specializations,'genders'=>$genders]);
     }
 
     /**
@@ -44,7 +45,7 @@ class TeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTeachers $request)
     {
         return $this->Teacher->StoreTeachers($request);
     }
@@ -55,10 +56,10 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
-    {
+   /* public function show(Teacher $teacher)
+   // {
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.
@@ -71,7 +72,7 @@ class TeacherController extends Controller
         $Teachers = $this->Teacher->editTeachers($id);
         $specializations = $this->Teacher->Getspecialization();
         $genders = $this->Teacher->GetGender();
-        return view('pages.Teachers.edit',compact('Teachers','specializations','genders'));
+        return view('pages.Teachers.edit' , ['Teachers'=>$Teachers ,'specializations'=> $specializations,'genders'=>$genders]);
     }
 
     /**
@@ -81,7 +82,7 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(StoreTeachers $request)
     {
         return $this->Teacher->UpdateTeachers($request);
 

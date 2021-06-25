@@ -1,6 +1,8 @@
 <?php
 namespace App\Repository;
 
+use App\Http\Requests\StoreClassesroom;
+use App\Http\Requests\StoreTeachers;
 use App\Models\Gender;
 use App\Models\Specialization;
 use App\Models\Teacher;
@@ -20,9 +22,10 @@ class TeacherRepository implements TeacherRepositoryInterface{
   public function GetGender(){
     return Gender::all();
  }
- public function StoreTeachers($request){
+ public function StoreTeachers(StoreTeachers $request){
 
     try {
+            $validated = $request->validated();
             $Teachers = new Teacher();
             $Teachers->Email = $request->Email;
             $Teachers->Password =  Hash::make($request->Password);
@@ -45,9 +48,10 @@ class TeacherRepository implements TeacherRepositoryInterface{
         return Teacher::findOrFail($id);
     }
 
-    public function UpdateTeachers($request)
+    public function UpdateTeachers( StoreTeachers $request)
     {
         try {
+            $validated = $request->validated();
             $Teachers = Teacher::findOrFail($request->id);
             $Teachers->Email = $request->Email;
             $Teachers->Password =  Hash::make($request->Password);
