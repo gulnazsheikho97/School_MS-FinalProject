@@ -960,7 +960,7 @@ class NationalitiesTableSeeder extends Seeder
         ];
 
         foreach ($nationals as $n) {
-            Nationalitie::create(['Nationalitie-Name' => $n]);
+            Nationalitie::create(['Nationalitie_Name' => $n]);
         }
 
     }

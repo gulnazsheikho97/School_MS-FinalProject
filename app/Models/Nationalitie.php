@@ -10,6 +10,6 @@ class Nationalitie extends Model
 {
     use HasFactory;
     use HasTranslations;
-    public $translatable = ['Nationalitie-Name'];
-    protected $fillable =['Nationalitie-Name'];
+    public $translatable = ['Nationalitie_Name'];
+    protected $fillable =['Nationalitie_Name'];
 }
