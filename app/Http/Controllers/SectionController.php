@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSections;
 use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\Grade;
+use App\Models\Teacher;
 
 class SectionController extends Controller
 {
@@ -17,6 +18,9 @@ class SectionController extends Controller
      */
     public function index()
     {
+      /*  $section= Section::findOrFail(1);
+        return $section->teachers;*/
+
         $Grades = Grade::with(['Sections'])->get();
 
         $list_Grades = Grade::all();
@@ -24,9 +28,10 @@ class SectionController extends Controller
         $Classromms = Classroom::with(['class_Section'])->get();
 
         $list_classes = Classroom::all();
+        $teachers = Teacher::all();
 
-        return view('pages.Sections.Sections',['Grades'=>$Grades,'List_Grades'=>$list_Grades,'Classromms'=>$Classromms,'list_classes'=>$list_classes]);
-    }
+        return view('pages.Sections.Sections',['Grades'=>$Grades,'List_Grades'=>$list_Grades,'Classromms'=>$Classromms,'list_classes'=>$list_classes,'teachers'=>$teachers]);
+     }
 
 
     /**
@@ -41,11 +46,11 @@ class SectionController extends Controller
 
             $validated = $request->validated();
             $Sections = new Section();
-
             $Sections->section_name = ['ar' => $request->section_name_Ar, 'en' => $request->section_name_En];
             $Sections->grade_id = $request->grade_id;
             $Sections->class_id = $request->class_id;
             $Sections->save();
+            $Sections->teachers()->attach($request->teacher_id);
             toastr()->success(trans('messages.success'));
 
             return redirect()->route('sections.index');
@@ -73,6 +78,13 @@ class SectionController extends Controller
             $Sections->section_name = ['ar' => $request->section_name_Ar, 'en' => $request->section_name_En];
             $Sections->grade_id = $request->grade_id;
             $Sections->class_id = $request->class_id;
+            if (isset($request->teacher_id)) {
+                $Sections->teachers()->sync($request->teacher_id);
+            }
+            else {
+                $Sections->teachers()->sync(array());
+            }
+
             $Sections->save();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('sections.index');
