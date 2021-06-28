@@ -71,5 +71,8 @@ return [
     //teachers
     'Teachers'=>'المعلمين',
     'List_Teachers' => 'قائمة المعلمين',
+    //students
+    'StudentsList'=>'قائمة الطلاب',
+    'AddStudent'=>'إضافة طالب',
 
 ];
