@@ -6,6 +6,8 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,7 @@ Route::group(
         Route::resource('sections', SectionController::class);
         //Route::get('/classes/{id}', 'SectionController@getclasses');
         Route::resource('teachers', TeacherController::class);
+        Route::resource('students', StudentController::class);
 
 
     });
