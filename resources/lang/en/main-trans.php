@@ -69,7 +69,10 @@ return [
      'Close' => 'Close',
     //teachers
      'Teachers'=>'Teachers',
-     'List_Teachers' => 'List Teachers',
+     'List_Teachers' => 'Teachers List',
+    //students
+    'StudentsList'=>'Students List',
+    'AddStudent'=>'Add Student',
 
 
 
