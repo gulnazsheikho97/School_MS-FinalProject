@@ -55,4 +55,56 @@ class StudentRepository implements StudentRepositoryInterface{
 
     }
 
+    public function Get_Student()
+    {
+        $students = Student::all();
+        return view('pages.Students.studentstable',['students'=>$students]);
+    }
+
+    public function Edit_Student($id)
+    {
+        $data['list_classes'] = Classroom::all();
+        $data['list_sections'] = Section::all();
+        $data['Grades'] = Grade::all();
+         //$data['parents'] = My_Parent::all();
+        $data['Genders'] = Gender::all();
+        $data['nationals'] = Nationalitie::all();
+        $data['bloods'] = BloodType::all();
+        $Students =  Student::findOrFail($id);
+        return view('pages.Students.edit',$data,['Students'=>$Students]);
+    }
+
+    public function Update_Student(StoreStudents $request)
+    {
+        try {
+            $Edit_Students = Student::findorfail($request->id);
+            $Edit_Students->student_name = ['ar' => $request->student_name_ar, 'en' => $request->student_name_en];
+            $Edit_Students->email = $request->email;
+            $Edit_Students->password = Hash::make($request->password);
+            $Edit_Students->gender_id = $request->gender_id;
+            $Edit_Students->nationalitie_id = $request->nationalitie_id;
+            $Edit_Students->blood_id = $request->blood_id;
+            $Edit_Students->Date_Birth = $request->Date_Birth;
+            $Edit_Students->Grade_id = $request->Grade_id;
+            $Edit_Students->Classroom_id = $request->Classroom_id;
+            $Edit_Students->section_id = $request->section_id;
+           // $Edit_Students->parent_id = $request->parent_id;
+            $Edit_Students->academic_year = $request->academic_year;
+            $Edit_Students->save();
+            toastr()->success(trans('messages.Update'));
+            return redirect()->route('students.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+
+    public function Delete_Student($request)
+    {
+
+        Student::destroy($request->id);
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->route('students.index');
+    }
+
 }
