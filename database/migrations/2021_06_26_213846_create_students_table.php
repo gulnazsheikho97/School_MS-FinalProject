@@ -25,7 +25,7 @@ class CreateStudentsTable extends Migration
             $table->bigInteger('Grade_id')->unsigned();
             $table->bigInteger('Classroom_id')->unsigned();
             $table->bigInteger('section_id')->unsigned();
-           // $table->bigInteger('parent_id')->unsigned();
+            $table->bigInteger('parent_id')->unsigned();
             $table->string('academic_year');
             $table->timestamps();
         });
