@@ -148,6 +148,19 @@
                             </div>
 
 
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="parent_id">{{trans('Students_trans.parent')}} : <span class="text-danger">*</span></label>
+                                    <select class="custom-select mr-sm-2" name="parent_id">
+                                        <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
+                                       @foreach($parents as $parent)
+                                            <option value="{{ $parent->id }}">{{ $parent->Name_Father }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="academic_year">{{trans('Students_trans.academic_year')}} : <span class="text-danger">*</span></label>
