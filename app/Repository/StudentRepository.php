@@ -8,6 +8,7 @@ use App\Models\Nationalitie;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\BloodType;
+use App\Models\My_Parent;
 use App\Http\Requests\StoreClassesroom;
 use App\Http\Requests\StoreStudents;
 use Exception;
@@ -20,7 +21,7 @@ class StudentRepository implements StudentRepositoryInterface{
         $data['my_grades'] = Grade::all();
         $data['list_classes'] = Classroom::all();
         $data['list_sections'] = Section::all();
-        // $data['parents'] = My_Parent::all();
+        $data['parents'] = My_Parent::all();
         $data['Genders'] = Gender::all();
         $data['nationals'] = Nationalitie::all();
         $data['bloods'] = BloodType::all();
@@ -42,7 +43,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->Grade_id = $request->Grade_id;
             $students->Classroom_id = $request->Classroom_id;
             $students->section_id = $request->section_id;
-            //$students->parent_id = $request->parent_id;
+            $students->parent_id = $request->parent_id;
             $students->academic_year = $request->academic_year;
             $students->save();
             toastr()->success(trans('messages.success'));
@@ -66,7 +67,7 @@ class StudentRepository implements StudentRepositoryInterface{
         $data['list_classes'] = Classroom::all();
         $data['list_sections'] = Section::all();
         $data['Grades'] = Grade::all();
-         //$data['parents'] = My_Parent::all();
+        $data['parents'] = My_Parent::all();
         $data['Genders'] = Gender::all();
         $data['nationals'] = Nationalitie::all();
         $data['bloods'] = BloodType::all();
@@ -88,7 +89,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $Edit_Students->Grade_id = $request->Grade_id;
             $Edit_Students->Classroom_id = $request->Classroom_id;
             $Edit_Students->section_id = $request->section_id;
-           // $Edit_Students->parent_id = $request->parent_id;
+            $Edit_Students->parent_id = $request->parent_id;
             $Edit_Students->academic_year = $request->academic_year;
             $Edit_Students->save();
             toastr()->success(trans('messages.Update'));

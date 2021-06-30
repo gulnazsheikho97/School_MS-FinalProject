@@ -35,7 +35,7 @@ class StoreStudents extends FormRequest
             'Grade_id' => 'required',
             'Classroom_id' => 'required',
             'section_id' => 'required',
-           // 'parent_id' => 'required',
+            'parent_id' => 'required',
             'academic_year' => 'required',
         ];
     }
@@ -53,7 +53,7 @@ class StoreStudents extends FormRequest
             'Date_Birth.required' => trans('validation.required'),
             'Classroom_id.required' => trans('validation.required'),
             'section_id.required' => trans('validation.required'),
-            //'parent_id.required' => trans('validation.required'),
+            'parent_id.required' => trans('validation.required'),
             'academic_year.required' => trans('validation.required'),
         ];
     }
