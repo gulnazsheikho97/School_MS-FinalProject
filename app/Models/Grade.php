@@ -20,4 +20,9 @@ class Grade extends Model
     public function Sections(){
         return $this->hasMany( 'App\Models\Section', 'grade_id');
     }
+
+    ////many to one relashionshep between Grades and Classes
+    public function Grade_Classes(){
+        return $this->hasMany( 'App\Models\Classroom', 'grade_id');
+    }
 }
