@@ -8,13 +8,14 @@ use App\Models\Nationalitie;
 use App\Models\Religion;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class AddParent extends Component
 {
     public $successMessage='';//SUCCESS MESSAGE
     public $currentStep = 1,
-    $Email, $Password,
-    $Name_Father, $Name_Father_en,
+    $Email, $Password,$show_table=true,$Parent_id,//display teacher table
+    $Name_Father, $Name_Father_en,$updateMode=false,//display edit form
     $National_ID_Father, $Passport_ID_Father,
     $Phone_Father, $Job_Father, $Job_Father_en,
     $Nationality_Father_id, $Blood_Type_Father_id,
@@ -42,15 +43,84 @@ class AddParent extends Component
         ]);
     }
 
-    public function render()
-    {
+    public function render()//return with Model
+    {// return with model that i want in the form
         return view('livewire.add-parent', [
             'Nationalities' => Nationalitie::all(),
             'Type_Bloods' => BloodType::all(),
             'Religions' => Religion::all(),
+            'my_parents'=>My_Parent::all()
+
         ]);
 
     }
+    public function showformadd(){//remove show parent and display add parent form
+        $this->show_table = false;
+    }
+
+    public function edit($id)//edit form
+    {
+        $this->show_table = false;
+        $this->updateMode = true;
+        $My_Parent = My_Parent::where('id',$id)->first();//id that come
+        $this->Parent_id = $id;
+        $this->Email = $My_Parent->Email;
+        $this->Password = $My_Parent->Password;
+        $this->Name_Father = $My_Parent->getTranslation('Name_Father', 'ar');
+        $this->Name_Father_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Father = $My_Parent->getTranslation('Job_Father', 'ar');;
+        $this->Job_Father_en = $My_Parent->getTranslation('Job_Father', 'en');
+        $this->National_ID_Father =$My_Parent->National_ID_Father;
+        $this->Passport_ID_Father = $My_Parent->Passport_ID_Father;
+        $this->Phone_Father = $My_Parent->Phone_Father;
+        $this->Nationality_Father_id = $My_Parent->Nationality_Father_id;
+        $this->Blood_Type_Father_id = $My_Parent->Blood_Type_Father_id;
+        $this->Address_Father =$My_Parent->Address_Father;
+        $this->Religion_Father_id =$My_Parent->Religion_Father_id;
+
+        $this->Name_Mother = $My_Parent->getTranslation('Name_Mother', 'ar');
+        $this->Name_Mother_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Mother = $My_Parent->getTranslation('Job_Mother', 'ar');;
+        $this->Job_Mother_en = $My_Parent->getTranslation('Job_Mother', 'en');
+        $this->National_ID_Mother =$My_Parent->National_ID_Mother;
+        $this->Passport_ID_Mother = $My_Parent->Passport_ID_Mother;
+        $this->Phone_Mother = $My_Parent->Phone_Mother;
+        $this->Nationality_Mother_id = $My_Parent->Nationality_Mother_id;
+        $this->Blood_Type_Mother_id = $My_Parent->Blood_Type_Mother_id;
+        $this->Address_Mother =$My_Parent->Address_Mother;
+        $this->Religion_Mother_id =$My_Parent->Religion_Mother_id;
+    }
+      // firstStepSubmit_edit
+    public function firstStepSubmit_edit()
+    {
+        $this->updateMode = true;
+        $this->currentStep = 2;
+
+    }
+
+    //secondStepSubmit_edit
+    public function secondStepSubmit_edit()
+    {
+        $this->updateMode = true;
+        $this->currentStep = 3;
+
+    }
+
+    public function submitForm_edit(){// update only passport Id and national id
+
+        if ($this->Parent_id){
+            $parent = My_Parent::find($this->Parent_id);
+            $parent->update([
+                'Passport_ID_Father' => $this->Passport_ID_Father,
+                'National_ID_Father' => $this->National_ID_Father,
+            ]);
+
+        }
+
+        return redirect()->to('/add_parent');
+    }
+
+
       //firstStepSubmit
       public function firstStepSubmit()
       {
@@ -128,6 +198,11 @@ class AddParent extends Component
             $this->currentStep = 1;//return to the first step
 
     }
+    public function delete($id){
+        My_Parent::findOrFail($id)->delete();
+        return redirect()->to('/add_parent');
+    }
+
       //clearForm return all input null
       public function clearForm()
       {
