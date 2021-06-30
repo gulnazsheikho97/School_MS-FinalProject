@@ -6,7 +6,7 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard">
+                        <a href="{{ route('dashboard') }}" data-toggle="collapse" data-target="#dashboard">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ trans('main-trans.Dashboard') }}</span>
                             </div>
                             <div class="clearfix"></div>
@@ -61,7 +61,7 @@
                         </a>
                         <ul id="students-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('students.create')}}">{{trans('main-trans.AddStudent')}} </a> </li>
-                            <li> <a href="">{{trans('main-trans.AddStudent')}} </a> </li>
+                            <li> <a href="{{route('students.index')}}">{{trans('main-trans.StudentsList')}} </a> </li>
                         </ul>
                     </li>
 
