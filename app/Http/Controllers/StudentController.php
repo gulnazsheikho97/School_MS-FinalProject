@@ -37,6 +37,17 @@ class StudentController extends Controller
         return $this->Student->Create_Student();
     }
 
+    /*
+    public function Get_classrooms($id)
+    {
+       return $this->Student->Get_classrooms($id);
+    }
+
+    public function Get_Sections($id)
+    {
+        return $this->Student->Get_Sections($id);
+    } */
+
     /**
      * Store a newly created resource in storage.
      *

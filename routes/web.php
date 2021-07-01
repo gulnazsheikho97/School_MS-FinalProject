@@ -40,6 +40,8 @@ Route::group(
         Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
         Route::resource('teachers', TeacherController::class);
         Route::resource('students', StudentController::class);
+        Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
+        Route::get('/Get_Sections/{id}', [StudentController::class, 'Get_Sections']);
         Route::view('add_parent', 'livewire.show_form');
         Route::post('Upload_attachment',  [StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
         Route::post('Delete_attachment',  [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');

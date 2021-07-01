@@ -32,6 +32,20 @@ class StudentRepository implements StudentRepositoryInterface{
 
      }
 
+    /* public function Get_classrooms($id){
+
+        $list_classes = Classroom::where("Grade_id", $id)->pluck("class_name", "id");
+        return $list_classes;
+
+    }
+
+    //Get Sections
+    public function Get_Sections($id){
+
+        $list_sections = Section::where("Class_id", $id)->pluck("section_name", "id");
+        return $list_sections;
+    } */
+
     public function Store_Student(StoreStudents $request){
 
         DB::beginTransaction();
