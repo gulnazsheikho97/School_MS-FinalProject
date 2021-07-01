@@ -267,8 +267,8 @@
                                         <div class="col">
                                             <label for="inputName"
                                                    class="control-label">{{ trans('main-trans.Name_Grade') }}</label>
-                                            <select name="grade_id" class="custom-select">
-                                                <!--placeholder  onchange="console.log($(this).val())"-->
+                                            <select name="grade_id" class="custom-select" onchange="console.log($(this).val())">
+                                                <!--placeholder -->
                                                 <option value="" selected
                                                         disabled>{{ trans('main-trans.Select_Grade') }}
                                                 </option>
@@ -281,20 +281,15 @@
 
                                         <br>
 
-
                                         <div class="col">
                                             <label for="inputName"
                                                    class="control-label">{{ trans('main-trans.Name_Class') }}</label>
                                             <select name="class_id" class="custom-select">
-                                                <option value="" selected disabled>{{ trans('main-trans.Select_Class') }}
-                                                </option>
-                                                 @foreach ($list_classes as $list_class)
-                                                <option value="{{ $list_class->id }}"> {{ $list_class->name_class }}
-                                            </option>
-                                        @endforeach
+
                                             </select>
                                         </div>
                                         <br>
+
                                         <div class="col">
                                             <label for="inputName" class="control-label">{{ trans('Teacher_trans.Name_Teacher')}}</label>
                                             <select multiple class="form-control" id="exampleFormControlSelect2">
@@ -325,7 +320,6 @@
         @section('js')
             @toastr_js
             @toastr_render
-            <!--
                 <script>
                 $(document).ready(function () {
                     $('select[name="grade_id"]').on('change', function () {
@@ -349,6 +343,5 @@
                 });
 
             </script>
-         -->
 
 @endsection

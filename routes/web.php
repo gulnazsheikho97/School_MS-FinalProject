@@ -37,7 +37,7 @@ Route::group(
         Route::resource('grades', GradeController::class);
         Route::resource('classrooms', ClassroomController::class);
         Route::resource('sections', SectionController::class);
-        //Route::get('/classes/{id}', 'SectionController@getclasses');
+        Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
         Route::resource('teachers', TeacherController::class);
         Route::resource('students', StudentController::class);
         Route::view('add_parent', 'livewire.show_form');

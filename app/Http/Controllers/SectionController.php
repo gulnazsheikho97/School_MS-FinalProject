@@ -108,12 +108,11 @@ class SectionController extends Controller
         return redirect()->route('sections.index');
     }
 
-/*
+
   public function getclasses($id)
     {
         $list_classes = Classroom::where("grade_id", $id)->pluck("name_class", "id");
 
         return $list_classes;
     }
-    */
 }
