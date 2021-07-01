@@ -25,5 +25,12 @@ return [
     'Deleted_Student' => 'Delete student data',
     'Deleted_Student_tilte' => 'Are you sure you want to delete this student ?',
     'addphoto'=>'Upload Student photos ',
-
+    'filename' => 'filename',
+    'created_at' => 'created_at',
+    'Download' => 'Download',
+    'delete' => 'Delete',
+    'Student_details' => 'Student Details',
+    'Delete_attachment' => 'Delete Attachment',
+    'Delete_attachment_tilte' => 'Are you sure you want to delete the attachment?',
+    'Attachments' => 'Attachments',
 ];
