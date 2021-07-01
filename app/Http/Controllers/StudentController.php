@@ -93,4 +93,15 @@ class StudentController extends Controller
         return $this->Student->Delete_Student($request);
     }
 
+    public function Upload_attachment(Request $request)
+    {
+        return $this->Student->Upload_attachment($request);
+    }
+
+    public function Delete_attachment(Request $request)
+    {
+        return $this->Student->Delete_attachment($request);
+
+    }
+
 }
