@@ -19,6 +19,27 @@ class Student extends Model
         return $this->belongsTo('App\Models\Gender', 'gender_id');
     }
 
+    // Relation one to many with Nationality
+    public function Nationality()
+    {
+        return $this->belongsTo('App\Models\Nationalitie', 'nationalitie_id');
+    }
+
+    // Relation one to many with parents
+    public function myparent()
+    {
+        return $this->belongsTo('App\Models\My_Parent', 'parent_id');
+    }
+
+
+    // Relation one to many with BloodType
+    public function BloodType()
+    {
+        return $this->belongsTo('App\Models\BloodType', 'blood_id');
+    }
+
+
+
     // Relation one to many with grades
     public function grade()
     {
@@ -37,9 +58,9 @@ class Student extends Model
         return $this->belongsTo('App\Models\Section', 'section_id');
     }
 
-        //  Relation one to many with  images
-        public function images()
-        {
-            return $this->morphMany(Image::class, 'imageable');
-        }
+    //  Relation one to many with  images
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
