@@ -41,6 +41,9 @@ Route::group(
         Route::resource('teachers', TeacherController::class);
         Route::resource('students', StudentController::class);
         Route::view('add_parent', 'livewire.show_form');
+        Route::post('Upload_attachment',  [StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
+        Route::post('Delete_attachment',  [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
+
 
 
     });
