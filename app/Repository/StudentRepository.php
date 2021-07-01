@@ -15,6 +15,7 @@ use App\Http\Requests\StoreStudents;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class StudentRepository implements StudentRepositoryInterface{
 
@@ -133,6 +134,36 @@ class StudentRepository implements StudentRepositoryInterface{
         Student::destroy($request->id);
         toastr()->error(trans('messages.Delete'));
         return redirect()->route('students.index');
+    }
+
+    public function Upload_attachment($request)
+    {
+        foreach($request->file('photos') as $file)
+        {
+            $name = $file->getClientOriginalName();
+            $file->storeAs('attachments/students/'.$request->student_name, $file->getClientOriginalName(),'upload_attachments');
+
+            // insert in image_table
+            $images= new image();
+            $images->filename=$name;
+            $images->imageable_id = $request->student_id;
+            $images->imageable_type = 'App\Models\Student';
+            $images->save();
+        }
+        toastr()->success(trans('messages.success'));
+        return redirect()->route('students.show',$request->student_id);
+    }
+
+
+    public function Delete_attachment($request)
+    {
+        // Delete img in server disk
+        Storage::disk('upload_attachments')->delete('attachments/students/'.$request->student_name.'/'.$request->filename);
+
+        // Delete in data
+        image::where('id',$request->id)->where('filename',$request->filename)->delete();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->route('students.show',$request->student_id);
     }
 
 }
