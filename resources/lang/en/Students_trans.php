@@ -24,5 +24,6 @@ return [
     'Close' => 'Close',
     'Deleted_Student' => 'Delete student data',
     'Deleted_Student_tilte' => 'Are you sure you want to delete this student ?',
+    'addphoto'=>'Upload Student photos ',
 
 ];
