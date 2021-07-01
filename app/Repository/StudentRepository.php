@@ -121,6 +121,11 @@ class StudentRepository implements StudentRepositoryInterface{
         }
     }
 
+    public function Show_Student($id){
+        $Student = Student::findorfail($id);
+        return view('pages.Students.show',['Student'=>$Student]);
+    }
+
 
     public function Delete_Student($request)
     {
